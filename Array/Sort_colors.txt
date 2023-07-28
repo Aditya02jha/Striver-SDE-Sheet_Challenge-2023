@@ -1,0 +1,32 @@
+class Solution {
+public:
+    void swap (int &a , int &b){
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+    void sortColors(vector<int>& nums) {
+        // sorting.
+        //count number of 0 1 2 and then place them one by one.
+        //make three elements zero 1 and 2 and then swap
+        int n = nums.size();
+        int strt = 0 , end = n-1 , mid = 0 ;
+
+        while(mid <= end && strt< end && strt<= mid){
+            if(nums[mid] == 0){
+                swap(nums[mid] , nums[strt]);
+                strt++;
+                mid++;
+            }
+           else if(nums[mid] == 1){
+                mid++;
+            }
+            else if(nums[mid] == 2){
+                swap(nums[end] , nums[mid]);
+                end--;
+            }
+
+        } 
+    }
+};
