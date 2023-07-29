@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+      //approach 1: replace the rows with the column.
+      // do transpose of the elements and then reverse them according to their rows.
+
+      int n = matrix.size();
+    //   int m = matrix[0].size();
+
+      for(int i=0;i<n;i++){
+          for(int j=i+1;j<n;j++){
+              swap(matrix[i][j], matrix[j][i]);
+          }
+      }
+
+      for(int i=0;i<n;i++){
+          reverse(matrix[i].begin() , matrix[i].end());
+      }
+
+    }
+};

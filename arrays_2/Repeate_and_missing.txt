@@ -1,0 +1,23 @@
+vector<int> Solution::repeatedNumber( const vector<int> &A) {
+    
+    vector<int>vec(A.size()+1 );
+    vector<int>ans;
+    for(int i =0;i<A.size() ; i++){
+        if(vec[A[i]] == 1){
+            ans.push_back(A[i]);
+            continue;
+        }
+        vec[A[i]] = vec[A[i]] + 1;
+        
+    }
+    
+    for(int i=1;i<vec.size(); i++){
+        if(vec[i] != 1){
+            ans.push_back(i);
+            break;
+        }
+    }   
+    
+    return ans;
+    
+}
