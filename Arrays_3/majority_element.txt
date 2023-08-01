@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        
+        map<int, int>mp;
+        int n = nums.size();
+        set<int>vec;
+        
+        for(int i=0;i<n;i++){
+            mp[nums[i]]++;
+            if(mp[nums[i]] > n/3){
+                vec.insert(nums[i]);
+            }
+        }
+        vector<int>ans;
+        for(auto x : vec){
+            ans.push_back(x);
+        }
+        return ans;
+    }
+};

@@ -1,0 +1,39 @@
+class Solution {
+public:
+    int path_counter(int &m , int &n, int curr_row , int curr_col , vector<vector<int>> &path){
+        
+        //base case :- if we are at last row/column then we have only one move..
+        //i.e move right/left. so. n of path = 1;
+        
+        if(curr_row == m-1 || curr_col == n-1){
+            return 1;
+        }
+
+        // if block is already visited
+
+        if(path[curr_row][curr_col] != 0) 
+            return path[curr_row][curr_col];
+
+        // memorise the path so we don't have to calculate again.
+        // The number of path from a block is : Sum of paths from right + Sum of paths from left.
+
+        path[curr_row][curr_col] = path_counter(m , n , curr_row , curr_col + 1 ,path)  
+                                    +  path_counter(m , n , curr_row + 1 ,curr_col ,path);
+        return path[curr_row][curr_col];
+    }
+    
+    
+    int uniquePaths(int m, int n) {
+        
+        int curr_row = 0;
+        int curr_col = 0;
+        
+        //create a vector of same size with zero to calculate the no. of path
+        //and store the no of paths from that block.
+
+        vector<vector<int>>path (m , vector<int>(n,0));
+        
+        return path_counter(m , n , curr_row , curr_col ,path);
+        
+    }
+};
